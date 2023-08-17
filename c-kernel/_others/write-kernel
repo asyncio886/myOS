@@ -1,0 +1,3 @@
+#! /bin/bash
+ld -m elf_i386 -Ttext 0xc0001500 -e main -o ./bin/kernel.bin ./out/main.o ./out/print.o ./out/idt-func.o && \
+dd if=./bin/kernel.bin of=../images/test.img bs=512 count=200 seek=9 conv=notrunc

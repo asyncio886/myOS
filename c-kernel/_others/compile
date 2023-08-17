@@ -1,0 +1,14 @@
+#! /usr/bin/bash
+filename_with_ext=`basename $1`
+filename_no_ext=${filename_with_ext%.*}
+if [ ! -e "./out" ];then
+    mkdir "./out"
+fi
+if [ ! -e "./bin"  ];then
+    mkdir "./bin"
+fi
+echo "compile ${filename_with_ext}"
+# -c 是不适用链接，直接生成目标文件
+gcc -c -g -o "./out/${filename_no_ext}.o" $1
+echo "static link"
+ld "out/${filename_no_ext}.o" -Ttext 0xc0001500 -e main -o "./bin/${filename_no_ext}.bin"

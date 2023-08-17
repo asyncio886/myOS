@@ -1,0 +1,10 @@
+#! /usr/bin/bash
+echo "input bin path"
+read bin_path
+echo "input image path"
+read image_path
+echo "input which selector want to start write"
+read seek_selector
+echo "write how many selector"
+read number_of_selectors
+dd if=${bin_path} of=${image_path} bs=512 count=${number_of_selectors} seek=${seek_selector} conv=notrunc

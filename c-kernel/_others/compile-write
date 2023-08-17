@@ -1,0 +1,7 @@
+#! /bin/bash
+# &&左边的命令（命令1）返回真(即返回0，成功被执行）后，
+# &&右边的命令（命令2）才能够被执行；换句话说，“如果这个命令执行成功&&那么执行这个命令”
+# 32为起始地址0x0008:00000cfd
+# 0x0008:0x00000e6a
+gcc -m32 -c -o ./out/main.o main.c && ld -m elf_i386 ./out/main.o -Ttext 0xc0001500 -e main -o ./bin/kernel.bin && dd \
+if=./bin/kernel.bin of=../images/test.img bs=512 count=200 seek=9 conv=notrunc

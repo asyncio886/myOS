@@ -1,0 +1,3 @@
+#! /bin/bash
+nasm -f elf -o ../out/print.o print.asm && \
+nasm -f elf -o ../out/idt-func.o idt-func.asm

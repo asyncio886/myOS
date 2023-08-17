@@ -1,0 +1,6 @@
+#! /usr/bin/bash
+echo "input bin path"
+read bin_path
+echo "input image path"
+read image_path
+dd if=${bin_path} of=${image_path} bs=512 count=1 conv=notrunc
